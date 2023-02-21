@@ -3,7 +3,10 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-    <router-view></router-view>
+    <div class="">
+        <router-view></router-view>
+    </div>
+
 </template>
 
 <style scoped>
