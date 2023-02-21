@@ -13,18 +13,9 @@
   ```
 -->
 <template>
-    <!--
-      This example requires updating your template:
 
-      ```
-      <html class="h-full bg-gray-50">
-      <body class="h-full">
-      ```
-    -->
-    <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="w-full max-w-md space-y-8">
-            <GuestLayout title="Sign in to your Account" @submit="login">
-
+            <GuestLayout title="Sign in to your Account">
+                <form class="mt-8 space-y-6" action="#" method="POST">
                     <input type="hidden" name="remember" value="true" />
                     <div class="-space-y-px rounded-md shadow-sm">
                         <div>
@@ -56,20 +47,14 @@
                             Sign in
                         </button>
                     </div>
-
+                </form>
             </GuestLayout>
 
-        </div>
-    </div>
 </template>
 
 <script setup>
 import { LockClosedIcon } from '@heroicons/vue/20/solid'
 import requestPassword from "./RequestPassword.vue";
 import GuestLayout from "../components/GuestLayout.vue";
-
-function login(){
-    console.log("Login");
-}
 </script>
 
