@@ -1,0 +1,39 @@
+---
+version: "3"
+
+services:
+  apache:
+    build:
+      context: ./apache
+    container_name: "${CONTAINER_PREFIX}apache"
+    environment:
+      - WEB_PHP_SOCKET=php:9000
+      - WEB_DOCUMENT_ROOT=/app/${PUBLIC_DIR}
+    volumes:
+      - ${WEBROOT}:/app
+    ports:
+      - 449:443
+
+  php:
+    build:
+      context: ./php
+      args:
+        - PHP_VERSION=${PHP_VERSION}
+    container_name: "${CONTAINER_PREFIX}php-fpm"
+    volumes:
+      - ${WEBROOT}:/app
+
+  mysql:
+    image: mysql:${MYSQL_VERSION}
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: "${CONTAINER_PREFIX}mysql"
+    restart: always
+    ports:
+      - 3334:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - ./mysql/data:/var/lib/mysql
