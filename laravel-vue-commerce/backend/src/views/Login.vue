@@ -69,7 +69,7 @@
     </div>
 </template>
 
+<script setup>
+import { LockClosedIcon } from '@heroicons/vue/20/solid'
+</script>
 
-<style scoped>
-
-</style>
