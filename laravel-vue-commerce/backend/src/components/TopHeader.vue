@@ -1,10 +1,9 @@
 <template>
-    <header class="flex justify-between items-center h-14 shadow bg-white">
-        <button class="p-4 text-gray-500">
-            <Bars3Icon class="w-7"></Bars3Icon>
+    <header class="flex justify-between items-center h-14 shadow bg-white p-4">
+        <button class="flex justify-center items-center rounded transition-colors w-8 h-8 text-gray-500 hover:bg-black/10">
+            <Bars3Icon class="w-6"></Bars3Icon>
         </button>
-        <div class="px-4">
-            <Menu as="div" class="relative inline-block text-left">
+        <Menu as="div" class="relative inline-block text-left">
                 <div>
                     <MenuButton class="flex items-center">
                        <img class="rounded-full w-8" src="https://randomuser.me/api/portraits/men/74.jpg">
@@ -63,8 +62,6 @@
                     </MenuItems>
                 </transition>
             </Menu>
-        </div>
-
     </header>
 </template>
 
