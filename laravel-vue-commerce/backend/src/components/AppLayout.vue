@@ -1,14 +1,5 @@
 <template>
-    <!--
-  This example requires updating your template:
-
-  ```
-  <html class="h-full bg-gray-50">
-  <body class="h-full">
-  ```
--->
-
-    <div class="min-h-full flex">
+    <div class="min-h-full flex bg-gray-100">
         <!--        SIDEBAR -->
        <sidebar></sidebar>
         <!--        END SIDEBAR -->
@@ -16,7 +7,9 @@
         <div class="flex-1">
             <TopHeader></TopHeader>
             <main class="p-6">
-                <router-view></router-view>
+                <div class="p-4 rounded bg-white">
+                    <router-view></router-view>
+                </div>
             </main>
         </div>
 
