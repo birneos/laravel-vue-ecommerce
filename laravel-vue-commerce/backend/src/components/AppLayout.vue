@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import {ref} from "vue"
+import {ref, onMounted, onUnmounted} from "vue"
 import Sidebar from "./Sidebar.vue";
 import Navbar from "./Navbar.vue";
 
@@ -26,5 +26,19 @@ const sidebarOpened = ref(true);
 function toggleSidebar() {
     sidebarOpened.value = !sidebarOpened.value
     console.log(sidebarOpened.value);
+}
+
+onMounted(()=>{
+    handlerSidebar();
+    window.addEventListener('resize',handlerSidebar);
+})
+
+onUnmounted(()=>{
+    handlerSidebar();
+    window.removeEventListener('resize',handlerSidebar);
+})
+function handlerSidebar(){
+    sidebarOpened.value = window.outerWidth > 768;
+
 }
 </script>
