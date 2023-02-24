@@ -34,7 +34,7 @@ class AuthController extends Controller
 
             return response([
                 'message' =>'You don\'t have permission to authenticate as admin',
-            ],403);
+            ],401);
         }
 
         $token = $user->createToken('main')->plainTextToken;
