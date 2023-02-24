@@ -16,6 +16,9 @@
 
     <GuestLayout title="Sign in to your Account">
         <form class="mt-8 space-y-6" method="POST" @submit.prevent="login">
+            <div v-if="errorMsg" class="flex justify-center items-center py-3 px-5 bg-red-500 text-white rounded">
+                {{errorMsg}}
+            </div>
             <input type="hidden" name="remember" value="true"/>
             <div class="-space-y-px rounded-md shadow-sm">
                 <div>
@@ -106,7 +109,7 @@ function login() {
             router.push({name: 'app.dashboard'})
         })
         .catch(
-            (response) => {
+            ({response}) => {
                 loading.value = false;
                 errorMsg.value = response.data.message;
             })
