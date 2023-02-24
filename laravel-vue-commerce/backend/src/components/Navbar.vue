@@ -84,10 +84,10 @@ import {
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import store from "../store/index.js";
-import router from "../router/index.js";
+import {useRouter} from "vue-router";
 
 const emit = defineEmits(["toggle-sidebar"]);
-
+const router = useRouter();
 function logout(){
     store.dispatch('logout').then(()=>{
         router.push({name:'login'})
