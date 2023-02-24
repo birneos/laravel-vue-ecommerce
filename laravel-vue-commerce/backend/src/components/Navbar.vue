@@ -9,7 +9,7 @@
         <Menu as="div" class="relative inline-block text-left">
             <div>
                 <MenuButton class="flex items-center">
-                    <img
+                    <img alt="User picture"
                         class="rounded-full w-8"
                         src="https://randomuser.me/api/portraits/men/74.jpg"
                     />
@@ -52,6 +52,7 @@
                         </MenuItem>
                         <MenuItem v-slot="{ active }">
                             <button
+                                @click="logout"
                                 :class="[
                                     active
                                         ? 'bg-indigo-600 text-white'
@@ -82,8 +83,17 @@ import {
 } from "@heroicons/vue/20/solid";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
+import store from "../store/index.js";
+import router from "../router/index.js";
 
 const emit = defineEmits(["toggle-sidebar"]);
+
+function logout(){
+    store.dispatch('logout').then(()=>{
+        debugger;
+        router.push({name:'login'})
+    })
+}
 </script>
 
 <style scoped></style>
