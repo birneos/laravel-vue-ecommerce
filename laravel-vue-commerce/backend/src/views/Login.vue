@@ -114,9 +114,12 @@ function login() {
             router.push({name: 'app.dashboard'})
         })
         .catch(
-            ({response}) => {
+            (error) => {
+                console.error(error);
+                const {response} = error;
+
                 loading.value = false;
-                errorMsg.value = response.data.message;
+                errorMsg.value = (response) ? response.data.message : "Server down... " + error.message;
             })
 
 }

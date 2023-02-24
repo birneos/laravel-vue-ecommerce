@@ -18,11 +18,14 @@ axiosClient.interceptors.response.use(
         return response;
     },
     (error) => {
+        if (error.code == "ERR_NETWORK") {
+            throw error;
+        }
         if (error.response.status === 401) {
             sessionStorage.removeItem("TOKEN");
             router.push({ name: "login" });
         }
-        // console.error(error);
+
         throw error;
     }
 );
