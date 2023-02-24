@@ -55,9 +55,7 @@ class AuthController extends Controller
         $user->currentAccessToken()->delete();
 
         return response([
-            '',
-            204
-        ]);
+        ],204);
 
     }
 }
