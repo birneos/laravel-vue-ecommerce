@@ -13,7 +13,7 @@
                         class="rounded-full w-8"
                         src="https://randomuser.me/api/portraits/men/74.jpg"
                     />
-                    <small class="ml-2">John Smith</small>
+                    <small class="ml-2">{{currentUser.name}}</small>
                     <ChevronDownIcon
                         class="h-5 w-5 text-indigo-200 hover:text-indigo-400"
                         aria-hidden="true"
@@ -85,9 +85,13 @@ import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import store from "../store/index.js";
 import {useRouter} from "vue-router";
+import {computed} from "vue";
 
 const emit = defineEmits(["toggle-sidebar"]);
 const router = useRouter();
+
+const currentUser = computed(()=> store.state.user.data);
+
 function logout(){
     store.dispatch('logout').then(()=>{
         router.push({name:'login'})
