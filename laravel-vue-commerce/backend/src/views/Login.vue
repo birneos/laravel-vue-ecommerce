@@ -78,14 +78,16 @@
 <script setup>
 import {ref} from 'vue'
 import {LockClosedIcon} from '@heroicons/vue/20/solid'
-import requestPassword from "./RequestPassword.vue";
 import GuestLayout from "../components/GuestLayout.vue";
 import store from "../store/index.js";
-import router from "../router/index.js";
+
+import {useRouter} from 'vue-router'
 
 //create variables will be watched by the DOM
 let loading = ref(false);
 let errorMsg = ref("");
+
+const router = useRouter();
 
 const user = {
     email: '',
