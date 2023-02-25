@@ -26,3 +26,7 @@ export function logout({ commit }) {
         })
         .catch();
 }
+
+export function getProducts({ commit }) {
+    return axiosClient.get("product").then((res) => {});
+}
